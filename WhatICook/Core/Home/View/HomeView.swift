@@ -16,7 +16,7 @@ struct HomeView: View {
                         PostCell()
                     }
                 }
-                .padding(.top, 15)
+                .padding(.vertical, 15)
             }
             .navigationTitle("WhatICook")
             .navigationBarTitleDisplayMode(.inline)

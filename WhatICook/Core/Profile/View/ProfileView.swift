@@ -67,7 +67,7 @@ struct ProfileView: View {
                             )
                     }
                     
-                    Divider()
+                    
                 }
                 .padding(.top)
                 
@@ -79,7 +79,9 @@ struct ProfileView: View {
                             .scaledToFill()
                     }
                 }
-            }            .navigationTitle("Profile")
+                .padding(.top)
+            }
+            .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

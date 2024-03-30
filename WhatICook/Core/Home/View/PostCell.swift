@@ -64,18 +64,19 @@ struct PostCell: View {
                         .foregroundColor(Constant.textColor)
                 }
                 
+                Spacer()
+                
                 Button {
                     
                 } label: {
-                    Image(systemName: "paperplane")
+                    Image(systemName: "eye")
                         .imageScale(.large)
                         .foregroundColor(Constant.textColor)
                         
                 }
                 
-                Spacer()
             }
-            .padding(.leading, 8)
+            .padding(.horizontal, 8)
             .padding(.top, 2)
             
             Text("23 Likes")

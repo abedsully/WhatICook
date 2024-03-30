@@ -198,8 +198,8 @@
 		A09D2D8F2BB885F700132C7F /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				A09D2D902BB885FC00132C7F /* View */,
-				A09D2D912BB885FD00132C7F /* ViewModel */,
+				A09D2D962BB89A4400132C7F /* Login */,
+				A09D2D972BB89A6200132C7F /* Register */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -213,6 +213,38 @@
 			sourceTree = "<group>";
 		};
 		A09D2D912BB885FD00132C7F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A09D2D962BB89A4400132C7F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A09D2D902BB885FC00132C7F /* View */,
+				A09D2D912BB885FD00132C7F /* ViewModel */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A09D2D972BB89A6200132C7F /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				A09D2D982BB89A6B00132C7F /* View */,
+				A09D2D992BB89A6D00132C7F /* ViewModel */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		A09D2D982BB89A6B00132C7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A09D2D992BB89A6D00132C7F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);

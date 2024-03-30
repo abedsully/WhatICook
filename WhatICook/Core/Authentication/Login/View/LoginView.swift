@@ -50,7 +50,7 @@ struct LoginView: View {
                     Text("Login")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundColor(Constant.textColor)
+                        .foregroundColor(.white)
                         .frame(width: 350, height: 44)
                         .background(Constant.mainColor)
                         .cornerRadius(8)
@@ -63,7 +63,8 @@ struct LoginView: View {
                 Divider()
                 
                 NavigationLink {
-                    Text("Sign up")
+                    RegisterEmailView()
+                        .navigationBarBackButtonHidden()
                 } label: {
                     HStack {
                         Text("Don't have an account?")
@@ -82,5 +83,7 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+//    LoginView()
+    LoginView().preferredColorScheme(.dark)
+
 }

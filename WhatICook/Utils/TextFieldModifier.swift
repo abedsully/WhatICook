@@ -21,5 +21,6 @@ struct TextFieldModifier: ViewModifier {
                     .stroke(Color(.systemGray5), lineWidth: 1)
                     .padding(.horizontal, 24)// Adjust the width as needed
             )
+            .fixedSize(horizontal: false, vertical: true) 
     }
 }

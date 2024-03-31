@@ -12,8 +12,8 @@ struct HomeView: View {
         NavigationStack {
             ScrollView {
                 LazyVStack (spacing: 28){
-                    ForEach(0 ... 15, id: \.self) { post in
-                        PostCell()
+                    ForEach(Post.mockPost) { post in
+                        PostCell(post: post)
                     }
                 }
                 .padding(.vertical, 15)

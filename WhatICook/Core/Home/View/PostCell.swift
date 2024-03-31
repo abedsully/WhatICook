@@ -8,24 +8,28 @@
 import SwiftUI
 
 struct PostCell: View {
+    let post: Post
+    
     var body: some View {
         VStack {
             // Content Credentials
             HStack (alignment: .center){
-                Image(Constant.profilePicture)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 40, height: 40)
-                    .clipShape(Circle())
-                
-                Text("abedsully")
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Constant.textColor)
-                
+                if let user = post.user {
+                    Image(user.profileImageURL ?? "")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                    
+                    Text(user.username)
+                        .font(.footnote)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Constant.textColor)
+                }
+
                 Spacer()
                 
-                Text("6h ago")
+                Text("\(post.timestamp)")
                     .font(.footnote)
                     .foregroundColor(Constant.textColor)
             }
@@ -33,14 +37,14 @@ struct PostCell: View {
             .padding(.bottom, 4)
             
             // Content Image
-            Image(Constant.profilePicture)
+            Image(post.imageURL)
                 .resizable()
                 .scaledToFill()
                 .frame(height: 400)
                 .clipShape(Rectangle())
             
             // Content Caption
-            Text("Fried Rice with Hamburger")
+            Text(post.foodName)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 2)
                 .fontWeight(.semibold)
@@ -79,7 +83,7 @@ struct PostCell: View {
             .padding(.horizontal, 8)
             .padding(.top, 2)
             
-            Text("23 Likes")
+            Text("\(post.likes) likes")
                 .font(.footnote)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 10)
@@ -93,5 +97,5 @@ struct PostCell: View {
 }
 
 #Preview {
-    PostCell()
+    PostCell(post: Post.mockPost[2])
 }

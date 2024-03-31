@@ -19,14 +19,14 @@ struct TabBarView: View {
                 .onAppear{selectedTab = 0}
                 .tag(0)
             
-            Text("Search View")
+            SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
                 .onAppear {selectedTab = 1}
                 .tag(1)
             
-            Text("")
+            UploadPostView(tabIndex: $selectedTab)
                 .tabItem {
                     Image(systemName: "plus")
                 }
@@ -41,7 +41,7 @@ struct TabBarView: View {
                 .onAppear{selectedTab = 3}
                 .tag(3)
             
-            ProfileView()
+            CurrentUserProfileView(user: User.mockUsers[0])
                 .tabItem {
                     Image(systemName: selectedTab == 4 ? "person.fill" : "person")
                         .environment(\.symbolVariants, selectedTab == 4 ? .fill : .none)

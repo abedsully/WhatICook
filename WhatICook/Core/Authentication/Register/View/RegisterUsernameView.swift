@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RegisterUsernameView: View {
-    @State private var username = ""
     @Environment (\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: RegistrationViewModel
     
     var body: some View {
         VStack (spacing: 12){
@@ -24,7 +24,7 @@ struct RegisterUsernameView: View {
                 .padding(.horizontal, 24)
                 .multilineTextAlignment(.center)
             
-            TextField("Enter your username", text: $username)
+            TextField("Enter your username", text: $viewModel.username)
                 .autocapitalization(.none)
                 .modifier(TextFieldModifier())
                 .padding(.top)

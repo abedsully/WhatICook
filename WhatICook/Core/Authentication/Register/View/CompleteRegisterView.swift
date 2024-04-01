@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CompleteRegisterView: View {
+    @EnvironmentObject var viewModel: RegistrationViewModel
+    
     var body: some View {
         VStack (spacing: 16){
             
@@ -16,7 +18,7 @@ struct CompleteRegisterView: View {
                 .scaledToFit()
                 .frame(width: 220, height: 220)
             
-            Text("Welcome to WhatICook, abedsully")
+            Text("Welcome to WhatICook, \(viewModel.username)")
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(Constant.mainColor)
@@ -29,7 +31,7 @@ struct CompleteRegisterView: View {
                 .foregroundColor(Constant.textColor)
             
             Button {
-                
+                Task { try await viewModel.createUser() }
             } label: {
                 Text("To home page")
                     .font(.subheadline)

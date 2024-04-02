@@ -15,15 +15,22 @@ class AuthService {
     static let shared = AuthService()
     
     init() {
-        // checking if we have user logged in into our apps
+        // checking if we have user logged in into our apps, from firebase
         self.userSession = Auth.auth().currentUser
     }
     
+    @MainActor
     func login(withEmail email: String, password: String) async throws {
-        
+        do {
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            self.userSession = result.user
+        } catch {
+            print("Failed to login \(error.localizedDescription)")
+        }
     }
     
-    func createUser(withEmail email: String, password: String, username: String) async throws {
+    @MainActor
+    func createUser(email: String, password: String, username: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
@@ -38,7 +45,8 @@ class AuthService {
     }
     
     func signOut() {
-        
+        try? Auth.auth().signOut()
+        self.userSession = nil
     }
     
 }

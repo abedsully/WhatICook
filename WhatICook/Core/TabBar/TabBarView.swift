@@ -15,6 +15,7 @@ struct TabBarView: View {
                 .tabItem {
                     Image(systemName: selectedTab == 0 ? "house.fill" : "house")
                         .environment(\.symbolVariants, selectedTab == 0 ? .fill : .none)
+                    
                 }
                 .onAppear{selectedTab = 0}
                 .tag(0)
@@ -22,6 +23,7 @@ struct TabBarView: View {
             SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
+                    
                 }
                 .onAppear {selectedTab = 1}
                 .tag(1)
@@ -49,6 +51,7 @@ struct TabBarView: View {
                 .onAppear{selectedTab = 4}
                 .tag(4)
         }
+        
     }
 }
 

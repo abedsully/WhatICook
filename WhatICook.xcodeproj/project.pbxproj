@@ -63,6 +63,8 @@
 		A09D2D9D2BB89FA000132C7F /* RegisterUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D2D9C2BB89FA000132C7F /* RegisterUsernameView.swift */; };
 		A09D2D9F2BB8A19700132C7F /* RegisterPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D2D9E2BB8A19700132C7F /* RegisterPasswordView.swift */; };
 		A09D2DA12BB8A27800132C7F /* CompleteRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D2DA02BB8A27800132C7F /* CompleteRegisterView.swift */; };
+		A0C74C9A2BBC691D00BFFDB1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C74C992BBC691D00BFFDB1 /* UserService.swift */; };
+		A0C74C9E2BBC6CBF00BFFDB1 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C74C9D2BBC6CBF00BFFDB1 /* SearchViewModel.swift */; };
 		A0CD70C72BBBA01E00820514 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CD70C62BBBA01E00820514 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,8 @@
 		A09D2D9C2BB89FA000132C7F /* RegisterUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUsernameView.swift; sourceTree = "<group>"; };
 		A09D2D9E2BB8A19700132C7F /* RegisterPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPasswordView.swift; sourceTree = "<group>"; };
 		A09D2DA02BB8A27800132C7F /* CompleteRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteRegisterView.swift; sourceTree = "<group>"; };
+		A0C74C992BBC691D00BFFDB1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		A0C74C9D2BBC6CBF00BFFDB1 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		A0CD70C62BBBA01E00820514 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,7 +145,8 @@
 		A005F03A2BB9152000D778E5 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				A005F03B2BB9153300D778E5 /* SearchView.swift */,
+				A0C74C9C2BBC6CB000BFFDB1 /* View */,
+				A0C74C9B2BBC6CAD00BFFDB1 /* ViewModel */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 		A09D2D792BB8490700132C7F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A0C74C992BBC691D00BFFDB1 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -423,6 +429,22 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		A0C74C9B2BBC6CAD00BFFDB1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0C74C9D2BBC6CBF00BFFDB1 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0C74C9C2BBC6CB000BFFDB1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A005F03B2BB9153300D778E5 /* SearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -526,6 +548,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0C74C9A2BBC691D00BFFDB1 /* UserService.swift in Sources */,
 				A09D2DA12BB8A27800132C7F /* CompleteRegisterView.swift in Sources */,
 				A005F04F2BB9812D00D778E5 /* UploadPostViewModel.swift in Sources */,
 				A09D2D9B2BB89B1A00132C7F /* RegisterEmailView.swift in Sources */,
@@ -543,6 +566,7 @@
 				A09D2D852BB868D100132C7F /* Constant.swift in Sources */,
 				A09D2D7E2BB8498100132C7F /* TabBarView.swift in Sources */,
 				A09D2D952BB8868300132C7F /* TextFieldModifier.swift in Sources */,
+				A0C74C9E2BBC6CBF00BFFDB1 /* SearchViewModel.swift in Sources */,
 				A005F04B2BB97AF900D778E5 /* PostFoodCategory.swift in Sources */,
 				A005F08B2BB9C70700D778E5 /* AuthService.swift in Sources */,
 				A005F0432BB94FA400D778E5 /* PostGridView.swift in Sources */,

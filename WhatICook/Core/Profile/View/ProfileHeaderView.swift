@@ -41,6 +41,8 @@ struct ProfileHeaderView: View {
                 if let bio = user.bio {
                     Text(bio)
                 }
+                
+                Text(user.username)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal)

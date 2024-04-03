@@ -16,4 +16,7 @@ struct Constant {
     
     // Profile Picture
     static let profilePicture = "ProfilePicture"
+    
+    // Firebase Collection
+    static let userCollection = "users"
 }

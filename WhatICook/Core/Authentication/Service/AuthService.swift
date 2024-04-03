@@ -7,16 +7,18 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
+import Firebase
 
 class AuthService {
     
     @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: User?
     
     static let shared = AuthService()
     
     init() {
-        // checking if we have user logged in into our apps, from firebase
-        self.userSession = Auth.auth().currentUser
+        Task {try await loadUserData() }
     }
     
     @MainActor
@@ -24,6 +26,7 @@ class AuthService {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
+            try await loadUserData()
         } catch {
             print("Failed to login \(error.localizedDescription)")
         }
@@ -34,19 +37,32 @@ class AuthService {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
+            await uploadUserData(uid: result.user.uid, email: email, username: username)
         } catch {
             print("Failed to register user \(error.localizedDescription)")
         }
     }
     
     // Fetch user data
+    @MainActor
     func loadUserData() async throws {
-        
+        self.userSession = Auth.auth().currentUser
+        guard let currentUid = userSession?.uid else {return}
+        let snapshot = try await Firestore.firestore().collection(Constant.userCollection).document(currentUid).getDocument()
+        self.currentUser = try? snapshot.data(as: User.self)
+        print("DEBUG: Snapshot data \(snapshot.data())")
     }
     
     func signOut() {
         try? Auth.auth().signOut()
         self.userSession = nil
+        self.currentUser = nil
     }
     
+    private func uploadUserData(uid: String, email: String, username: String) async{
+        let user = User(id: uid, username: username, email: email)
+        self.currentUser = user
+        guard let encodedUser = try? Firestore.Encoder().encode(user) else {return}
+        try? await Firestore.firestore().collection(Constant.userCollection).document(uid).setData(encodedUser)
+    }
 }

@@ -22,6 +22,7 @@ class ContentViewModel: ObservableObject {
         setupSubscribers()
     }
     
+    @MainActor
     func setupSubscribers (){
         service.$userSession.sink { [weak self] userSession in
             self?.userSession = userSession

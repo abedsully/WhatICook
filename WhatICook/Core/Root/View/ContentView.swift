@@ -20,6 +20,7 @@ struct ContentView: View {
             
             else if let currentUser = viewModel.currentUser {
                 TabBarView(user: currentUser)
+                
             }
         }
     }

@@ -24,14 +24,7 @@ struct UploadPostView: View {
         VStack {
             HStack (){
                 Button {
-                    foodName = ""
-                    category = .snack
-                    description = ""
-                    ingredients = ""
-                    directions = ""
-                    viewModel.selectedImage = nil
-                    viewModel.postImage = nil
-                    tabIndex = 0
+                    clearPostDataAndReturn()
                 } label: {
                     Image(systemName: "multiply")
                         .imageScale(.large)
@@ -51,7 +44,12 @@ struct UploadPostView: View {
                 Spacer()
                 
                 Button {
+                    Task {
+                        try await viewModel.uploadPost(foodName: foodName, category: category.rawValue, description: description, ingredients: ingredients, instructions: directions)
+                        clearPostDataAndReturn()
+                    }
                     
+
                 } label: {
                     Text("Post")
                         .fontWeight(.semibold)
@@ -128,6 +126,17 @@ struct UploadPostView: View {
         }
         .photosPicker(isPresented: $imagePickerPresented, selection: $viewModel.selectedImage)
         
+    }
+    
+    func clearPostDataAndReturn (){
+        foodName = ""
+        category = .snack
+        description = ""
+        ingredients = ""
+        directions = ""
+        viewModel.selectedImage = nil
+        viewModel.postImage = nil
+        tabIndex = 0
     }
 }
 

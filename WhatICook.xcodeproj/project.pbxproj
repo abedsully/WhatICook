@@ -47,8 +47,10 @@
 		A005F08B2BB9C70700D778E5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A005F08A2BB9C70700D778E5 /* AuthService.swift */; };
 		A005F0902BB9C84500D778E5 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A005F08F2BB9C84500D778E5 /* ContentViewModel.swift */; };
 		A005F0922BB9CA5100D778E5 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A005F0912BB9CA5100D778E5 /* RegistrationViewModel.swift */; };
+		A04CCB002BC3E07D00B94CD7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CCAFF2BC3E07D00B94CD7 /* HomeViewModel.swift */; };
 		A06BDEA82BC1937000AF9ACC /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06BDEA72BC1937000AF9ACC /* ImageUploader.swift */; };
 		A06BDEAB2BC19E7600AF9ACC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A06BDEAA2BC19E7600AF9ACC /* Kingfisher */; };
+		A06BDEAE2BC2E28D00AF9ACC /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06BDEAD2BC2E28D00AF9ACC /* CircularProfileImageView.swift */; };
 		A09D2D672BB848DE00132C7F /* WhatICookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D2D662BB848DE00132C7F /* WhatICookApp.swift */; };
 		A09D2D692BB848DE00132C7F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D2D682BB848DE00132C7F /* ContentView.swift */; };
 		A09D2D6B2BB848E000132C7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A09D2D6A2BB848E000132C7F /* Assets.xcassets */; };
@@ -86,7 +88,9 @@
 		A005F08A2BB9C70700D778E5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A005F08F2BB9C84500D778E5 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		A005F0912BB9CA5100D778E5 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		A04CCAFF2BC3E07D00B94CD7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A06BDEA72BC1937000AF9ACC /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		A06BDEAD2BC2E28D00AF9ACC /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
 		A09D2D632BB848DE00132C7F /* WhatICook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatICook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09D2D662BB848DE00132C7F /* WhatICookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatICookApp.swift; sourceTree = "<group>"; };
 		A09D2D682BB848DE00132C7F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 			children = (
 				A09D2D872BB8706600132C7F /* UserStatusView.swift */,
 				A005F0422BB94FA400D778E5 /* PostGridView.swift */,
+				A06BDEAD2BC2E28D00AF9ACC /* CircularProfileImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 		A09D2D8A2BB8757100132C7F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A04CCAFF2BC3E07D00B94CD7 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -582,9 +588,11 @@
 				A0CD70C72BBBA01E00820514 /* LoginViewModel.swift in Sources */,
 				A005F0452BB9509F00D778E5 /* ProfileHeaderView.swift in Sources */,
 				A005F0922BB9CA5100D778E5 /* RegistrationViewModel.swift in Sources */,
+				A06BDEAE2BC2E28D00AF9ACC /* CircularProfileImageView.swift in Sources */,
 				A06BDEA82BC1937000AF9ACC /* ImageUploader.swift in Sources */,
 				A0B193462BBF18B2004F09A6 /* EditProfileViewModel.swift in Sources */,
 				A005F0902BB9C84500D778E5 /* ContentViewModel.swift in Sources */,
+				A04CCB002BC3E07D00B94CD7 /* HomeViewModel.swift in Sources */,
 				A09D2D9D2BB89FA000132C7F /* RegisterUsernameView.swift in Sources */,
 				A005F0392BB9140F00D778E5 /* User.swift in Sources */,
 				A09D2D852BB868D100132C7F /* Constant.swift in Sources */,

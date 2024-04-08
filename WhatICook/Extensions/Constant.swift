@@ -19,4 +19,5 @@ struct Constant {
     
     // Firebase Collection
     static let userCollection = "users"
+    static let postCollection = "posts"
 }

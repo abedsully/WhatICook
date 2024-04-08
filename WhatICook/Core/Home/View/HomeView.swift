@@ -7,12 +7,16 @@
 
 import SwiftUI
 
+
 struct HomeView: View {
+    
+    @StateObject var viewModel = HomeViewModel()
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack (spacing: 28){
-                    ForEach(Post.mockPost) { post in
+                    ForEach(viewModel.posts) { post in
                         PostCell(post: post)
                     }
                 }

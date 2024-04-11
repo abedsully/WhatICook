@@ -9,7 +9,23 @@ import SwiftUI
 import Kingfisher
 
 struct PostCell: View {
-    let post: Post
+    @ObservedObject var viewModel: PostCellViewModel
+    
+    private var post: Post {
+        return viewModel.post
+    }
+    
+    private var didLike: Bool {
+        return post.didLike ?? false
+    }
+    
+    init(post: Post) {
+        self.viewModel = PostCellViewModel(post: post)
+    }
+    
+    private var postLikes: Int {
+        return post.likes
+    }
     
     var body: some View {
         VStack {
@@ -40,11 +56,11 @@ struct PostCell: View {
                 .clipShape(Rectangle())
             
             
-            VStack (alignment: .leading){
-                Text("Delicious Pasta")
+            VStack (alignment: .center){
+                Text(post.foodName)
                     .font(.title2)
                     .fontWeight(.semibold)
-                Text("Classic Italian dish with tomatoes and noodles, it is so great you should make it")
+                Text(post.description)
                     .font(.caption)
             }
             .padding(.horizontal, 8)
@@ -55,11 +71,11 @@ struct PostCell: View {
             HStack {
                 
                 Button {
-                    
+                    likeButtonTapped()
                 } label: {
-                    Image(systemName: "heart")
+                    Image(systemName: didLike ? "heart.fill" : "heart")
                         .imageScale(.large)
-                        .foregroundColor(Constant.textColor)
+                        .foregroundColor(didLike ? .red : Constant.textColor)
                 }
                 
                 Button {
@@ -89,13 +105,24 @@ struct PostCell: View {
             .padding(.horizontal, 10)
             .padding(.top, 6)
             
-            Text("\(post.likes) likes")
-                .font(.footnote)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 14)
-                .padding(.top, 1)
-                .foregroundColor(Constant.textColor)
-            
+            if postLikes > 0 {
+                Text("\(post.likes) likes")
+                    .font(.footnote)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 14)
+                    .padding(.top, 1)
+                    .foregroundColor(Constant.textColor)
+            }
+        }
+    }
+    
+    func likeButtonTapped() {
+        Task {
+            if didLike {
+                try await viewModel.unlike()
+            } else {
+                try await viewModel.like()
+            }
         }
     }
 }

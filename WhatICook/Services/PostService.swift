@@ -33,3 +33,41 @@ struct PostService {
         return try snapshot.documents.compactMap({ try $0.data(as: Post.self) })
     }
 }
+
+// MARK: - Likes
+
+extension PostService {
+    static func likePost(_ post: Post) async throws {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        // Async let is used in order to let the following codes run simultaneously
+        
+        // Adding New Collection Post Likes to the Collection of 'post'
+        async let _ = try await postCollection.document(post.id).collection(Constant.postLikes).document(uid).setData([:])
+        
+        // Updating the likes attributes from post collection by 1
+        async let _ = try await postCollection.document(post.id).updateData(["likes": post.likes + 1])
+        
+        // Adding New Collection User Likes to the Collection of 'user'
+        async let _ = Firestore.firestore().collection(Constant.userCollection).document(uid).collection(Constant.userLikes).document(post.id).setData([:])
+    }
+    
+    static func unlikePost(_ post: Post) async throws {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        async let _ = try await postCollection.document(post.id).collection(Constant.postLikes).document(uid).delete()
+        
+        async let _ = try await postCollection.document(post.id).updateData(["likes": post.likes - 1])
+        
+        async let _ = Firestore.firestore().collection(Constant.userCollection).document(uid).collection(Constant.userLikes).document(post.id).delete()
+    }
+    
+    static func checkIfUserLikedPost(_ post: Post) async throws -> Bool{
+        guard let uid = Auth.auth().currentUser?.uid else {return false}
+        
+        let snapshot = try await Firestore.firestore().collection(Constant.userCollection).document(uid).collection(Constant.userLikes).document(post.id).getDocument()
+        
+        return snapshot.exists
+    }
+    
+}

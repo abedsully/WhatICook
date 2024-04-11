@@ -25,7 +25,7 @@ struct ProfileView: View {
                 UserContentListView(user: user)
 
             }
-            .navigationTitle("Profile")
+            .navigationTitle(user.username)
             .navigationBarTitleDisplayMode(.inline)
     }
 }

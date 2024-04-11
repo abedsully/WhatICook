@@ -15,35 +15,29 @@ struct ProfileHeaderView: View {
         VStack (spacing: 10){
             
             // Profile Picture and Status
-            HStack {
+            VStack {
                 CircularProfileImageView(user: user, size: .large)
+                    .padding(.bottom, 8)
                 
-                Spacer()
-
-                UserStatusView(value: 5, description: "Posts")
-                UserStatusView(value: 12, description: "Followers")
-                UserStatusView(value: 24, description: "Followings")
-                
-                
-            }
-            .padding(.horizontal)
-
-            // Name and Bio
-            VStack (alignment: .leading){
                 if let fullname = user.fullName {
                     Text(fullname)
+                        .font(.footnote)
                         .fontWeight(.semibold)
                 }
-                    
+                
                 if let bio = user.bio {
                     Text(bio)
+                        .font(.footnote)
                 }
                 
-                Text(user.username)
+                HStack {
+                    UserStatusView(value: 5, description: "Posts")
+                    UserStatusView(value: 12, description: "Followers")
+                    UserStatusView(value: 24, description: "Followings")
+                }
+                .padding(.vertical, 8)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal)
-            .font(.footnote)
+            
 
             // Action Button
             Button {

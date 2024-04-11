@@ -24,7 +24,7 @@ struct CurrentUserProfileView: View {
                 // Grid View
                 UserContentListView(user: user)
             }
-            .navigationTitle("Profile")
+            .navigationTitle(user.username)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

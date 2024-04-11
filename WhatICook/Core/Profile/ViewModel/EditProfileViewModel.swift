@@ -64,7 +64,7 @@ class EditProfileViewModel: ObservableObject {
         // Update Name
         if !fullname.isEmpty && user.fullName != fullname {
             user.fullName = fullname
-            data["fullname"] = fullname
+            data["fullName"] = fullname
         }
         
         

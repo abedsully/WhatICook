@@ -22,7 +22,7 @@ struct CurrentUserProfileView: View {
                 ProfileHeaderView(user: user)
                 
                 // Grid View
-                PostGridView(posts: posts)
+                UserContentListView(user: user)
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)

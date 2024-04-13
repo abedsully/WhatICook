@@ -71,11 +71,17 @@
 		A09D2D9D2BB89FA000132C7F /* RegisterUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D2D9C2BB89FA000132C7F /* RegisterUsernameView.swift */; };
 		A09D2D9F2BB8A19700132C7F /* RegisterPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D2D9E2BB8A19700132C7F /* RegisterPasswordView.swift */; };
 		A09D2DA12BB8A27800132C7F /* CompleteRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D2DA02BB8A27800132C7F /* CompleteRegisterView.swift */; };
+		A0AE8E252BCAD2B500D961A9 /* DeveloperPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE8E242BCAD2B500D961A9 /* DeveloperPreview.swift */; };
 		A0B193432BBF1552004F09A6 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B193422BBF1552004F09A6 /* EditProfileView.swift */; };
 		A0B193462BBF18B2004F09A6 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B193452BBF18B2004F09A6 /* EditProfileViewModel.swift */; };
 		A0C74C9A2BBC691D00BFFDB1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C74C992BBC691D00BFFDB1 /* UserService.swift */; };
 		A0C74C9E2BBC6CBF00BFFDB1 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C74C9D2BBC6CBF00BFFDB1 /* SearchViewModel.swift */; };
 		A0CD70C72BBBA01E00820514 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CD70C62BBBA01E00820514 /* LoginViewModel.swift */; };
+		A0F557112BC917A000E1A98E /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F557102BC917A000E1A98E /* CommentsView.swift */; };
+		A0F557132BC917A700E1A98E /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F557122BC917A700E1A98E /* CommentsCell.swift */; };
+		A0F557152BC9450800E1A98E /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F557142BC9450800E1A98E /* Comments.swift */; };
+		A0F557192BC9460000E1A98E /* CommentsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F557182BC9460000E1A98E /* CommentsService.swift */; };
+		A0F5571B2BC9460D00E1A98E /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5571A2BC9460D00E1A98E /* CommentsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,11 +122,17 @@
 		A09D2D9C2BB89FA000132C7F /* RegisterUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUsernameView.swift; sourceTree = "<group>"; };
 		A09D2D9E2BB8A19700132C7F /* RegisterPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPasswordView.swift; sourceTree = "<group>"; };
 		A09D2DA02BB8A27800132C7F /* CompleteRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteRegisterView.swift; sourceTree = "<group>"; };
+		A0AE8E242BCAD2B500D961A9 /* DeveloperPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperPreview.swift; sourceTree = "<group>"; };
 		A0B193422BBF1552004F09A6 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A0B193452BBF18B2004F09A6 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		A0C74C992BBC691D00BFFDB1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		A0C74C9D2BBC6CBF00BFFDB1 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		A0CD70C62BBBA01E00820514 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A0F557102BC917A000E1A98E /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		A0F557122BC917A700E1A98E /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
+		A0F557142BC9450800E1A98E /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		A0F557182BC9460000E1A98E /* CommentsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsService.swift; sourceTree = "<group>"; };
+		A0F5571A2BC9460D00E1A98E /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				A09D2D8F2BB885F700132C7F /* Authentication */,
+				A0F5570B2BC9176B00E1A98E /* Comments */,
 				A09D2D862BB8704E00132C7F /* Component */,
 				A09D2D7F2BB867BF00132C7F /* Home */,
 				A09D2D802BB867C500132C7F /* Profile */,
@@ -339,6 +352,7 @@
 			children = (
 				A005F04A2BB97AF900D778E5 /* PostFoodCategory.swift */,
 				A09D2D842BB868D100132C7F /* Constant.swift */,
+				A0AE8E242BCAD2B500D961A9 /* DeveloperPreview.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -522,6 +536,50 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A0F5570B2BC9176B00E1A98E /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				A0F5570C2BC9177F00E1A98E /* Model */,
+				A0F5570F2BC9178800E1A98E /* Service */,
+				A0F5570D2BC9178200E1A98E /* View */,
+				A0F5570E2BC9178500E1A98E /* ViewModel */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		A0F5570C2BC9177F00E1A98E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A0F557142BC9450800E1A98E /* Comments.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A0F5570D2BC9178200E1A98E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0F557102BC917A000E1A98E /* CommentsView.swift */,
+				A0F557122BC917A700E1A98E /* CommentsCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0F5570E2BC9178500E1A98E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0F5571A2BC9460D00E1A98E /* CommentsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0F5570F2BC9178800E1A98E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A0F557182BC9460000E1A98E /* CommentsService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -638,6 +696,7 @@
 				A09D2D692BB848DE00132C7F /* ContentView.swift in Sources */,
 				A09D2D932BB8861300132C7F /* LoginView.swift in Sources */,
 				A0CD70C72BBBA01E00820514 /* LoginViewModel.swift in Sources */,
+				A0F557132BC917A700E1A98E /* CommentsCell.swift in Sources */,
 				A005F0452BB9509F00D778E5 /* ProfileHeaderView.swift in Sources */,
 				A005F0922BB9CA5100D778E5 /* RegistrationViewModel.swift in Sources */,
 				A06BDEAE2BC2E28D00AF9ACC /* CircularProfileImageView.swift in Sources */,
@@ -650,15 +709,20 @@
 				A09D2D9D2BB89FA000132C7F /* RegisterUsernameView.swift in Sources */,
 				A005F0392BB9140F00D778E5 /* User.swift in Sources */,
 				A09D2D852BB868D100132C7F /* Constant.swift in Sources */,
+				A0F557112BC917A000E1A98E /* CommentsView.swift in Sources */,
 				A09D2D7E2BB8498100132C7F /* TabBarView.swift in Sources */,
 				A09D2D952BB8868300132C7F /* TextFieldModifier.swift in Sources */,
+				A0F557192BC9460000E1A98E /* CommentsService.swift in Sources */,
 				A0C74C9E2BBC6CBF00BFFDB1 /* SearchViewModel.swift in Sources */,
 				A005F04B2BB97AF900D778E5 /* PostFoodCategory.swift in Sources */,
 				A005F08B2BB9C70700D778E5 /* AuthService.swift in Sources */,
 				A005F03C2BB9153300D778E5 /* SearchView.swift in Sources */,
+				A0F5571B2BC9460D00E1A98E /* CommentsViewModel.swift in Sources */,
 				A05C9F102BC4592F00FC7D4A /* ProfileActivityFilter.swift in Sources */,
+				A0F557152BC9450800E1A98E /* Comments.swift in Sources */,
 				A09D2D672BB848DE00132C7F /* WhatICookApp.swift in Sources */,
 				A005F0492BB971B100D778E5 /* UploadPostView.swift in Sources */,
+				A0AE8E252BCAD2B500D961A9 /* DeveloperPreview.swift in Sources */,
 				A09D2D882BB8706600132C7F /* UserStatusView.swift in Sources */,
 				A05C9F122BC45C2100FC7D4A /* PostService.swift in Sources */,
 				A005F0402BB948E900D778E5 /* Post.swift in Sources */,

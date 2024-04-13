@@ -11,6 +11,8 @@ import Kingfisher
 struct PostCell: View {
     @ObservedObject var viewModel: PostCellViewModel
     
+    @State private var showComments = false
+    
     private var post: Post {
         return viewModel.post
     }
@@ -79,7 +81,7 @@ struct PostCell: View {
                 }
                 
                 Button {
-                    
+                    showComments.toggle()
                 } label: {
                     Image(systemName: "bubble.right")
                         .imageScale(.large)
@@ -114,6 +116,10 @@ struct PostCell: View {
                     .foregroundColor(Constant.textColor)
             }
         }
+        .sheet(isPresented: $showComments, content: {
+            CommentsView(post: post)
+                .presentationDragIndicator(.visible)
+        })
     }
     
     func likeButtonTapped() {

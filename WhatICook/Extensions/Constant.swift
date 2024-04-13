@@ -22,4 +22,5 @@ struct Constant {
     static let postCollection = "posts"
     static let postLikes = "post-likes"
     static let userLikes = "user-likes"
+    static let postComments = "post-comments"
 }

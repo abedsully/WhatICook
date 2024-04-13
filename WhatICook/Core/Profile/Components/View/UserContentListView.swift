@@ -84,7 +84,7 @@ struct UserContentListView: View {
                             
                         }
                     }
-                    .padding(.top)
+                    .padding(.vertical, 4)
                     
                 case .likes:
                     //                    ForEach(viewModel.posts) { post in

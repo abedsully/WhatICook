@@ -99,7 +99,7 @@ struct PostCell: View {
                 
                 Spacer()
                 
-                Text("Cooked 2 hours ago")
+                Text("Cooked: \(post.timestamp.timestampString()) ago")
                     .font(.footnote)
                     .foregroundStyle(Constant.textColor)
                 

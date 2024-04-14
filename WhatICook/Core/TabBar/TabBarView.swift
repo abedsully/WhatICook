@@ -54,6 +54,7 @@ struct TabBarView: View {
                 .onAppear{selectedTab = 4}
                 .tag(4)
         }
+        .tint(Constant.textColor)
         
     }
 }

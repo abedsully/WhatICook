@@ -101,6 +101,7 @@ struct EditProfileRowView: View {
             
             VStack {
                 TextField(placeholder, text: $text)
+                    .autocorrectionDisabled(true)
                 
                 Divider()
             }

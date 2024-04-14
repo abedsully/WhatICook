@@ -14,7 +14,7 @@ struct PostService {
     
     static func fetchPost() async throws -> [Post] {
         
-        let snapshot = try await Firestore.firestore().collection(Constant.postCollection).getDocuments()
+        let snapshot = try await Firestore.firestore().collection(Constant.postCollection).order(by: "timestamp", descending: true).getDocuments()
         
         var posts = try snapshot.documents.compactMap({ try $0.data(as: Post.self) })
         

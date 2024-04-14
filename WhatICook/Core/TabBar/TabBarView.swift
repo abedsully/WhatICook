@@ -40,7 +40,7 @@ struct TabBarView: View {
             
             Text("Notifications View")
                 .tabItem {
-                    Image(systemName: selectedTab == 3 ? "heart.fill" : "heart")
+                    Image(systemName: selectedTab == 3 ? "bell.fill" : "bell")
                         .environment(\.symbolVariants, selectedTab == 3 ? .fill : .none)
                 }
                 .onAppear{selectedTab = 3}

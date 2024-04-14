@@ -33,15 +33,20 @@ struct PostCell: View {
         VStack {
             
             HStack() {
-                if let user = post.user {
-                    CircularProfileImageView(user: user, size: .xSmall)
-                    
-                    Text(user.username)
-                        .font(.footnote)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Constant.textColor)
-                    
+                Button {
+                    print("Debug")
+                } label: {
+                    if let user = post.user {
+                        CircularProfileImageView(user: user, size: .xSmall)
+                        
+                        Text(user.username)
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Constant.textColor)
+                        
+                    }
                 }
+
                 
                 Spacer()
             }

@@ -16,10 +16,21 @@ struct User: Identifiable, Codable, Hashable {
     var bio: String?
     let email: String
     
+    
     var isCurrentUser: Bool {
         guard let currentUid = Auth.auth().currentUser?.uid else {return false}
         return currentUid == id
     }
+    
+    var stats: UserStats?
+    
+    var isFollowed: Bool? = false
+}
+
+struct UserStats: Codable, Hashable{
+    var followingCount: Int
+    var followersCount: Int
+    var postsCount: Int
 }
 
 extension User {

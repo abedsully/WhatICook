@@ -23,4 +23,8 @@ struct Constant {
     static let postLikes = "post-likes"
     static let userLikes = "user-likes"
     static let postComments = "post-comments"
+    static let followingCollection = "following"
+    static let followersCollection = "followers"
+    static let userFollowers = "user-followers"
+    static let userFollowing = "user-following"
 }

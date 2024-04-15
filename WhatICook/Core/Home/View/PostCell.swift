@@ -33,9 +33,7 @@ struct PostCell: View {
         VStack {
             
             HStack() {
-                Button {
-                    print("Debug")
-                } label: {
+                NavigationLink(value: post.user) {
                     if let user = post.user {
                         CircularProfileImageView(user: user, size: .xSmall)
                         
@@ -46,7 +44,9 @@ struct PostCell: View {
                         
                     }
                 }
-
+                .navigationDestination(for: User.self) { user in
+                    ProfileView(user: user)
+                }
                 
                 Spacer()
             }
@@ -112,14 +112,21 @@ struct PostCell: View {
             .padding(.horizontal, 10)
             .padding(.top, 6)
             
-            if postLikes > 0 {
-                Text("\(post.likes) likes")
-                    .font(.footnote)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 14)
-                    .padding(.top, 1)
-                    .foregroundColor(Constant.textColor)
+            
+            NavigationLink(value: UserListConfig.likes(postId: post.id)) {
+                if postLikes > 0 {
+                    Text("\(post.likes) likes")
+                        .font(.footnote)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 14)
+                        .padding(.top, 1)
+                        .foregroundColor(Constant.textColor)
+                }
             }
+            .navigationDestination(for: UserListConfig.self) { config in
+                UserListView(config: config)
+            }
+
         }
         .sheet(isPresented: $showComments, content: {
             CommentsView(post: post)

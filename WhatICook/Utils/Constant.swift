@@ -27,4 +27,5 @@ struct Constant {
     static let followersCollection = "followers"
     static let userFollowers = "user-followers"
     static let userFollowing = "user-following"
+    static let notificationCollection = "notifications"
 }

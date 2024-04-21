@@ -28,6 +28,7 @@ extension ProfileViewModel {
         Task {
             try await UserService.follow(uid: user.id)
             user.isFollowed = true
+            NotificationManager.shared.uploadFollowNotification(toUid: user.id)
             
             if let count = user.stats?.followersCount {
                 if count >= 0 {
@@ -49,6 +50,7 @@ extension ProfileViewModel {
                     user.stats?.followersCount -= 1
                 }
             }
+            await NotificationManager.shared.deleteFollowNotification(toUid: user.id)
         }
     }
     

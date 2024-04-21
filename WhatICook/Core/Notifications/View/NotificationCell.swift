@@ -6,39 +6,60 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct NotificationCell: View {
+    let notification: Notification
+    
     var body: some View {
         HStack {
-            CircularProfileImageView(size: .xSmall)
+            NavigationLink(value: notification.user) {
+                CircularProfileImageView(user: notification.user, size: .xSmall)
+            }
             
             // Notifications Message
             HStack {
-                Text("test ")
+                Text(notification.user?.username ?? "")
                     .font(.subheadline)
                     .fontWeight(.semibold) +
                 
-                Text("liked one of your posts")
+                Text(" \(notification.type.notificationMessage)")
                     .font(.subheadline) +
                 
-                Text(" 3w")
+                Text(" \(notification.timestamp.timestampString())")
                     .foregroundStyle(.gray)
                     .font(.footnote)
             }
             
             Spacer()
-            
-            Image("ProfilePicture")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 40, height: 40)
-                .clipped()
-                .padding(.leading, 2)
+        
+            if notification.type != .follow {
+                NavigationLink(value: notification.post) {
+                    KFImage(URL(string: notification.post?.imageURL ?? ""))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 40)
+                        .clipped()
+                        .padding(.leading, 2)
+                }
+            } else {
+                Button {
+                    
+                } label: {
+                    Text("Follow")
+                        .font(.subheadline)
+                        .frame(width: 80, height: 32)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.white)
+                        .background(Constant.mainColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                }
+            }
         }
         .padding(.horizontal)
     }
 }
 
 #Preview {
-    NotificationCell()
+    NotificationCell(notification: DeveloperPreview.shared.notifications[0])
 }

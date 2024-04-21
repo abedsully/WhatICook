@@ -126,7 +126,23 @@ struct PostCell: View {
             .navigationDestination(for: UserListConfig.self) { config in
                 UserListView(config: config)
             }
-
+            
+            if post.comments > 0 {
+                Button {
+                    showComments.toggle()
+                } label: {
+                    
+                    Text("\(post.comments) comments")
+                        .font(.footnote)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 14)
+                        .padding(.top, 1)
+                        .foregroundStyle(.gray)
+                    
+                }
+            }
+            
+            
         }
         .sheet(isPresented: $showComments, content: {
             CommentsView(post: post)

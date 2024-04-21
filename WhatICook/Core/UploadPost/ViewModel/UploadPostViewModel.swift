@@ -46,7 +46,7 @@ class UploadPostViewModel: ObservableObject {
         
         let postRef = Firestore.firestore().collection(Constant.postCollection).document()
         
-        let post = Post(id: postRef.documentID, ownerUid: uid, likes: 0, foodName: foodName, category: category, description: description, ingredients: ingredients, instructions: instructions, imageURL: imageURL, timestamp: Timestamp())
+        let post = Post(id: postRef.documentID, ownerUid: uid, likes: 0, comments: 0, foodName: foodName, category: category, description: description, ingredients: ingredients, instructions: instructions, imageURL: imageURL, timestamp: Timestamp())
         
         guard let encodedPost = try? Firestore.Encoder().encode(post) else {return}
         

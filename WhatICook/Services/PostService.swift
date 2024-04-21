@@ -30,7 +30,11 @@ struct PostService {
     
     static func fetchUserPost(uid: String) async throws -> [Post] {
         let snapshot = try await postCollection.whereField("ownerUid", isEqualTo: uid).getDocuments()
-        return try snapshot.documents.compactMap({ try $0.data(as: Post.self) })
+        var posts = try snapshot.documents.compactMap({ try $0.data(as: Post.self) })
+        
+        posts.sort(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending })
+        
+        return posts
     }
     
     static func fetchPost(postId: String) async throws -> Post {

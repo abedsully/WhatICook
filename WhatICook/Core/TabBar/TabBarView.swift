@@ -57,6 +57,20 @@ struct TabBarView: View {
         .tint(Constant.textColor)
         
     }
+    
+    var messageLink: some View {
+        NavigationLink(
+            destination: ConversationsView(),
+            label: {
+                Image(systemName: "paperplane")
+                    .resizable()
+                    .font(.system(size: 20, weight: .light))
+                    .scaledToFit()
+                    .foregroundColor(.black)
+            })
+    }
+    
+    
 }
 
 #Preview {

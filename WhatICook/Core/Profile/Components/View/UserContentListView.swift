@@ -76,21 +76,22 @@ struct UserContentListView: View {
                 case .posts:
                     LazyVGrid(columns: gridItems, spacing: 2) {
                         ForEach(viewModel.posts) { post in
-                            KFImage(URL(string: post.imageURL))
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: imageDimension, height: imageDimension)
-                                .clipped()
+                            NavigationLink(value: post) {
+                                KFImage(URL(string: post.imageURL))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: imageDimension, height: imageDimension)
+                                    .clipped()
+                            }
                             
                         }
                     }
+                    .navigationDestination(for: Post.self, destination: { post in
+                        PostCell(post: post)
+                    })
                     .padding(.vertical, 4)
                     
                 case .likes:
-                    //                    ForEach(viewModel.posts) { post in
-                    //                        PostGridView(user: post.user ?? User.mockUsers[0])
-                    //                    }
-                    
                     Text("Hello")
                 }
                 
@@ -98,6 +99,18 @@ struct UserContentListView: View {
             }
         }
         .padding(.top, 8)
+        .onAppear {
+            Task {
+                do {
+                    if selectedActivity == .likes {
+                        try await viewModel.fetchUserLikedPost() // Fetch liked posts if .likes is selected
+                    }
+                } catch {
+                    // Handle any errors here
+                    print("Error fetching liked posts: \(error)")
+                }
+            }
+        }
     }
 }
 

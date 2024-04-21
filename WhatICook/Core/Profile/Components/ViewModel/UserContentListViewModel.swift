@@ -12,11 +12,14 @@ class UserContentListViewModel: ObservableObject {
     
     private let user: User
     @Published var posts = [Post]()
+    @Published var likedPosts = [Post]()
     
     init(user: User) {
         self.user = user
         
-        Task {try await fetchUserPosts() }
+        Task {
+            try await fetchUserPosts()
+        }
     }
     
     @MainActor

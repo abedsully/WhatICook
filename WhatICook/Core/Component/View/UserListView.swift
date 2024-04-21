@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UserListView: View {
+    
     @StateObject var viewModel = UserListViewModel()
     @State private var searchText = ""
     
@@ -48,7 +49,6 @@ struct UserListView: View {
                 .searchable(text: $searchText, prompt: "Enter name")
             }
             .task {
-
                 await viewModel.fetchUsers(forConfig: config)
             }
         }

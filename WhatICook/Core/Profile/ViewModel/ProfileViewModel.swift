@@ -21,6 +21,8 @@ class ProfileViewModel: ObservableObject {
             self.user.stats = try await UserService.fetchUserStats(uid: user.id)
         }
     }
+    
+    
 }
 
 extension ProfileViewModel {

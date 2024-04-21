@@ -22,6 +22,11 @@ struct HomeView: View {
                 }
                 .padding(.vertical, 15)
             }
+            .refreshable {
+                Task {
+                    try await viewModel.fetchPosts()
+                }
+            }
             .navigationTitle("WhatICook")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -32,8 +37,14 @@ struct HomeView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Image(systemName: "paperplane")
-                        .imageScale(.large)
+                    NavigationLink(
+                        destination: ConversationsView(),
+                        label: {
+                            Image(systemName: "paperplane")
+                                .imageScale(.large)
+                                .scaledToFit()
+                                .foregroundColor(Constant.textColor)
+                        })
                 }
             }
         }

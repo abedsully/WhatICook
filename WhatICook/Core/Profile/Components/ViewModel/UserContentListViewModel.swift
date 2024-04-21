@@ -20,6 +20,10 @@ class UserContentListViewModel: ObservableObject {
         Task {
             try await fetchUserPosts()
         }
+        
+        Task {
+            try await fetchUserLikedPost()
+        }
     }
     
     @MainActor
@@ -31,5 +35,18 @@ class UserContentListViewModel: ObservableObject {
             posts[i].user = self.user
         }
     }
+    
+    @MainActor
+    func fetchUserLikedPost() async throws{
+        do {
+            self.likedPosts = try await PostService.fetchLikedPost(uid: user.id)
+            for i in 0 ..< likedPosts.count {
+                likedPosts[i].user = self.user
+            }
+        } catch {
+            print("Error fetching liked posts: \(error.localizedDescription)")
+        }
+    }
+
     
 }

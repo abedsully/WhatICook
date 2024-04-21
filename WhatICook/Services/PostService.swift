@@ -40,6 +40,14 @@ struct PostService {
     static func fetchPost(postId: String) async throws -> Post {
         return try await postCollection.document(postId).getDocument(as: Post.self)
     }
+    
+    static func fetchLikedPost(uid: String) async throws -> [Post] {
+        let snapshot = try await Firestore.firestore().collection(Constant.userCollection).document(uid).collection(Constant.userLikes).getDocuments()
+        
+        return snapshot.documents.compactMap({try? $0.data(as: Post.self)})
+    }
+
+
 }
 
 // MARK: - Likes
@@ -56,8 +64,12 @@ extension PostService {
         // Updating the likes attributes from post collection by 1
         async let _ = try await postCollection.document(post.id).updateData(["likes": post.likes + 1])
         
+        let postData = try await Firestore.firestore().collection(Constant.postCollection).document(post.id).getDocument().data()
+        
         // Adding New Collection User Likes to the Collection of 'user'
-        async let _ = Firestore.firestore().collection(Constant.userCollection).document(uid).collection(Constant.userLikes).document(post.id).setData([:])
+        if let postData = postData {
+            async let _ = Firestore.firestore().collection(Constant.userCollection).document(uid).collection(Constant.userLikes).document(post.id).setData(postData)
+        }
     }
     
     static func unlikePost(_ post: Post) async throws {

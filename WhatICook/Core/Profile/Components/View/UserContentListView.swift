@@ -92,25 +92,29 @@ struct UserContentListView: View {
                     .padding(.vertical, 4)
                     
                 case .likes:
-                    Text("Hello")
+                    LazyVGrid(columns: gridItems, spacing: 2) {
+                        ForEach(viewModel.likedPosts) { post in
+                            NavigationLink(value: post) {
+                                KFImage(URL(string: post.imageURL))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: imageDimension, height: imageDimension)
+                                    .clipped()
+                            }
+                            
+                        }
+                    }
+                    .navigationDestination(for: Post.self, destination: { post in
+                        PostCell(post: post)
+                    })
+                    .padding(.vertical, 4)
+                    
+                    
+                    
                 }
-                
-                
             }
         }
         .padding(.top, 8)
-        .onAppear {
-            Task {
-                do {
-                    if selectedActivity == .likes {
-                        try await viewModel.fetchUserLikedPost() // Fetch liked posts if .likes is selected
-                    }
-                } catch {
-                    // Handle any errors here
-                    print("Error fetching liked posts: \(error)")
-                }
-            }
-        }
     }
 }
 

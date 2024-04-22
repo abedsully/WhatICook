@@ -82,9 +82,9 @@ struct UserContentListView: View {
                                     .scaledToFill()
                                     .frame(width: imageDimension, height: imageDimension)
                                     .clipped()
-                            }
-                            
+                            }    
                         }
+                        .transition(.move(edge: .leading))
                     }
                     .navigationDestination(for: Post.self, destination: { post in
                         PostCell(post: post)
@@ -103,6 +103,7 @@ struct UserContentListView: View {
                             }
                             
                         }
+                        .transition(.move(edge: .trailing))
                     }
                     .navigationDestination(for: Post.self, destination: { post in
                         PostCell(post: post)

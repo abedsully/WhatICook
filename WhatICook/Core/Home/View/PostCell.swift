@@ -51,7 +51,6 @@ struct PostCell: View {
                             .font(.footnote)
                             .fontWeight(.semibold)
                             .foregroundColor(Constant.textColor)
-                        
                     }
                 }
                 .navigationDestination(for: User.self) { user in

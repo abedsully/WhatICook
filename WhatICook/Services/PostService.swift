@@ -48,13 +48,24 @@ struct PostService {
         // Mapping it
         let likedPostIDs = userLikesSnapshot.documents.map { $0.documentID }
         
+        if likedPostIDs.isEmpty {
+            return [] // Return an empty array if there are no liked posts
+        }
+        
         // Matching the likedPostIds with the id (PostId)
         let likedPostsSnapshot = try await Firestore.firestore().collection(Constant.postCollection).whereField("id", in: likedPostIDs).getDocuments()
 
         // Mapping It Again
-        let likedPosts = likedPostsSnapshot.documents.compactMap { try? $0.data(as: Post.self) }
+        var posts = try likedPostsSnapshot.documents.compactMap({ try $0.data(as: Post.self) })
         
-        return likedPosts
+        for i in 0 ..< posts.count {
+            let post = posts[i]
+            let ownerUid = post.ownerUid
+            let postUser = try await UserService.fetchUser(withUid: ownerUid)
+            posts[i].user = postUser
+        }
+        
+        return posts
     }
     
     static func deletePost(postId: String) async throws {

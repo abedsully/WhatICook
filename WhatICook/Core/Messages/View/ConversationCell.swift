@@ -20,13 +20,14 @@ struct ConversationCell: View {
                     if let user = message.user {
                         Text(user.fullName ?? "")
                             .font(.system(size: 14, weight: .semibold))
+                            
                     }
                     
                     Text(message.text)
                         .font(.system(size: 15))
                         .lineLimit(2)
                 }
-                .foregroundColor(.black)
+                .foregroundStyle(Constant.textColor)
                 .padding(.trailing)
                 
                 Spacer()

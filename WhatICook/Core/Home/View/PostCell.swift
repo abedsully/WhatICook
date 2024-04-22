@@ -12,6 +12,7 @@ struct PostCell: View {
     @ObservedObject var viewModel: PostCellViewModel
     
     @State private var showComments = false
+    @State private var showDetail = false
     
     private var post: Post {
         return viewModel.post
@@ -94,13 +95,14 @@ struct PostCell: View {
                 }
                 
                 Button {
-                    
+                    showDetail.toggle()
                 } label: {
                     Image(systemName: "eye")
                         .imageScale(.large)
                         .foregroundColor(Constant.textColor)
-                    
                 }
+
+
                 
                 Spacer()
                 
@@ -146,6 +148,11 @@ struct PostCell: View {
         }
         .sheet(isPresented: $showComments, content: {
             CommentsView(post: post)
+                .presentationDragIndicator(.visible)
+        })
+        
+        .sheet(isPresented: $showDetail, content: {
+            PostDetailView(post: post)
                 .presentationDragIndicator(.visible)
         })
     }

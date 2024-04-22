@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import Firebase
 
 struct PostCell: View {
     @ObservedObject var viewModel: PostCellViewModel
@@ -30,10 +31,18 @@ struct PostCell: View {
         return post.likes
     }
     
+    private var currentUid: String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
+    @State private var showPostOption = false
+    @State private var selectedOption: PostSettingModel?
+    @State private var showDetails = false
+    
     var body: some View {
         VStack {
             
-            HStack() {
+            HStack(alignment: .center) {
                 NavigationLink(value: post.user) {
                     if let user = post.user {
                         CircularProfileImageView(user: user, size: .xSmall)
@@ -50,6 +59,34 @@ struct PostCell: View {
                 }
                 
                 Spacer()
+                
+                
+                if currentUid == post.ownerUid {
+                    Button {
+                        showPostOption.toggle()
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .imageScale(.medium)
+                    }
+                    .sheet(isPresented: $showPostOption, content: {
+                        PostSettingView(selectedOption: $selectedOption)
+                            .presentationDetents([.height(CGFloat(SettingsModel.allCases.count * 56))])
+                            .presentationDragIndicator(.visible)
+                    })
+                    .onChange(of: selectedOption) { newValue in
+                        guard let option = newValue else { return }
+                        
+                        if option == .delete {
+                            Task {
+                                try await viewModel.deletePost()
+                            }
+                        }
+                    }
+                    
+                }
+                
+                
+                
             }
             .padding(.horizontal, 8)
             .padding(.bottom, 4)
@@ -77,7 +114,6 @@ struct PostCell: View {
             
             // Action Buttons
             HStack {
-                
                 Button {
                     likeButtonTapped()
                 } label: {
@@ -101,8 +137,8 @@ struct PostCell: View {
                         .imageScale(.large)
                         .foregroundColor(Constant.textColor)
                 }
-
-
+                
+                
                 
                 Spacer()
                 

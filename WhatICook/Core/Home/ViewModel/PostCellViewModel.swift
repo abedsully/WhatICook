@@ -45,4 +45,12 @@ class PostCellViewModel: ObservableObject {
     func checkIfUserLikedPost() async throws {
         self.post.didLike = try await PostService.checkIfUserLikedPost(post)
     }
+    
+    func deletePost() async throws {
+        do {
+            try await PostService.deletePost(postId: post.id)
+        } catch {
+            print("Error deleting post: \(error.localizedDescription)")
+        }
+    }
 }

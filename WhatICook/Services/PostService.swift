@@ -42,12 +42,20 @@ struct PostService {
     }
     
     static func fetchLikedPost(uid: String) async throws -> [Post] {
-        let snapshot = try await Firestore.firestore().collection(Constant.userCollection).document(uid).collection(Constant.userLikes).getDocuments()
+        // Getting the postId from the user-likes of User Collection
+        let userLikesSnapshot = try await Firestore.firestore().collection(Constant.userCollection).document(uid).collection(Constant.userLikes).getDocuments()
+
+        // Mapping it
+        let likedPostIDs = userLikesSnapshot.documents.map { $0.documentID }
         
-        return snapshot.documents.compactMap({try? $0.data(as: Post.self)})
+        // Matching the likedPostIds with the id (PostId)
+        let likedPostsSnapshot = try await Firestore.firestore().collection(Constant.postCollection).whereField("id", in: likedPostIDs).getDocuments()
+
+        // Mapping It Again
+        let likedPosts = likedPostsSnapshot.documents.compactMap { try? $0.data(as: Post.self) }
+        
+        return likedPosts
     }
-
-
 }
 
 // MARK: - Likes

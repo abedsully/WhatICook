@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct NotificationCell: View {
+    
     let notification: Notification
     
     var body: some View {
@@ -41,18 +42,6 @@ struct NotificationCell: View {
                         .frame(width: 40, height: 40)
                         .clipped()
                         .padding(.leading, 2)
-                }
-            } else {
-                Button {
-                    
-                } label: {
-                    Text("Follow")
-                        .font(.subheadline)
-                        .frame(width: 80, height: 32)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                        .background(Constant.mainColor)
-                        .clipShape(RoundedRectangle(cornerRadius: 6))
                 }
             }
         }

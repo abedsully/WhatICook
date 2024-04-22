@@ -70,6 +70,8 @@ extension PostService {
         if let postData = postData {
             async let _ = Firestore.firestore().collection(Constant.userCollection).document(uid).collection(Constant.userLikes).document(post.id).setData(postData)
         }
+        
+        async let _ =  Firestore.firestore().collection(Constant.userCollection).document(uid).collection(Constant.userLikes).document(post.id).updateData(["likes": post.likes + 1])
     }
     
     static func unlikePost(_ post: Post) async throws {

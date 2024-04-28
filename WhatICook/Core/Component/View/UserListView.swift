@@ -11,6 +11,7 @@ struct UserListView: View {
     
     @StateObject var viewModel = UserListViewModel()
     @State private var searchText = ""
+    @ObservedObject var viewModelSearch = SearchViewModel(config: .search)
     
     private let config: UserListConfig
     
@@ -21,7 +22,7 @@ struct UserListView: View {
     var body: some View {
         ScrollView {
             LazyVStack (spacing: 16){
-                ForEach(viewModel.users) { user in
+                ForEach(searchText.isEmpty ? viewModel.users : viewModelSearch.filteredUsers(searchText)) { user in
                     NavigationLink(value: user) {
                         HStack {
                             CircularProfileImageView(user: user, size: .small)
